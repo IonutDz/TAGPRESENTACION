@@ -504,151 +504,201 @@
         </div>
 
         <div class="text-grid">
-            <div>
-                <label>1. Identidad</label>
-                <input type="text" id="q1" class="txt">
+            <div class="full">
+                <label>1. ¿Cómo te llamas y qué apodos te dicen? ¿Por qué?</label>
+                <textarea id="q1"></textarea>
                 <div class="chips">
                     <div class="chip"
-                        onclick="fill('q1', '╭──────────╮\n│ 👤 [B]User:[/B] [ID]\n│ 🏷️ [B]Alias:[/B] [Apodo]\n╰──────────╯')">
+                        onclick="fill('q1', '╭──────────╮\n│ 👤 [B]Nombre:[/B] [Tu nombre]\n│ 🏷️ [B]Apodo:[/B] [Apodo]\n│ 💬 Me dicen así porque...\n╰──────────╯')">
                         <strong>📦 Caja</strong>Estética
                     </div>
                     <div class="chip"
-                        onclick="fill('q1', '[B]Nombre:[/B] [Nombre]\n[B]Apodo:[/B] [Apodo]\n[B]Estado:[/B] En línea 🟢')">
+                        onclick="fill('q1', '[B]Nombre:[/B] [Tu nombre]\n[B]Apodo:[/B] [Apodo]\n[B]Razón:[/B] Mis amigos me lo pusieron por...')">
                         <strong>📋 Ficha</strong>Datos
                     </div>
-                    <div class="chip" onclick="fill('q1', '>>> [I]Identity Loaded.[/I]\n[B]Subject:[/B] [Apodo].')">
-                        <strong>💻 Code</strong>Terminal
+                    <div class="chip"
+                        onclick="fill('q1', 'Me llamo [Nombre], pero pueden decirme [Apodo]. Me pusieron ese nombre porque...')">
+                        <strong>� Texto</strong>Narrativo
                     </div>
                     <div class="chip"
-                        onclick="fill('q1', '[B]Class:[/B] Humano\n[B]Name:[/B] [Nombre]\n[B]Lvl:[/B] 1')"><strong>⚔️
-                            RPG</strong>Juego</div>
+                        onclick="fill('q1', '[B]🎮 Gamertag:[/B] [Apodo]\n[B]📛 IRL:[/B] [Nombre]\n[B]📖 Origin:[/B] Lo saqué de...')">
+                        <strong>🎮
+                            Gamer</strong>Nick
+                    </div>
                 </div>
             </div>
 
-            <div>
-                <label>2. Origen</label>
-                <input type="text" id="q2" class="txt">
+            <div class="full">
+                <label>2. ¿De dónde eres? ¿Cómo supiste de Kyodo?</label>
+                <textarea id="q2"></textarea>
                 <div class="chips">
                     <div class="chip"
-                        onclick="fill('q2', 'Tras la caída de Amino, busqué un nuevo hogar y llegué aquí.')"><strong>🅰️
-                            Amino</strong>Refugio</div>
+                        onclick="fill('q2', '[B]📍 País:[/B] [Tu país]\n[B]📱 Llegué por:[/B] Vi la app en TikTok y me llamó la atención.')">
+                        <strong>📱
+                            TikTok</strong>Viral
+                    </div>
                     <div class="chip"
-                        onclick="fill('q2', 'Vi un video en TikTok sobre esta app y decidí probar suerte.')"><strong>📱
-                            TikTok</strong>Viral</div>
-                    <div class="chip" onclick="fill('q2', '[B]📍 Base:[/B] [País]\n[B]📡 Vía:[/B] YouTube.')"><strong>🌎
-                            Info</strong>Iconos</div>
-                    <div class="chip" onclick="fill('q2', 'Un amigo me invitó a formar parte de esta comunidad.')">
-                        <strong>🤝 Amigo</strong>Invitado
+                        onclick="fill('q2', 'Soy de [País]. Conocí Kyodo gracias a un amigo que me invitó a unirme.')">
+                        <strong>🤝
+                            Amigo</strong>Invitado
+                    </div>
+                    <div class="chip"
+                        onclick="fill('q2', '[B]📍 Base:[/B] [País]\n[B]📡 Vía:[/B] Vengo de Amino, buscaba una nueva comunidad tras el cierre.')">
+                        <strong>�️
+                            Amino</strong>Refugiado
+                    </div>
+                    <div class="chip"
+                        onclick="fill('q2', 'Vengo de [País]. Encontré Kyodo buscando en la tienda de apps algo diferente.')">
+                        <strong>🔍 AppStore</strong>Explorador
                     </div>
                 </div>
             </div>
 
-            <div>
-                <label>3. Gustos</label>
+            <div class="full">
+                <label>3. ¿Cuáles son tus gustos y disgustos?</label>
                 <textarea id="q3"></textarea>
                 <div class="chips">
                     <div class="chip"
-                        onclick="fill('q3', '[C]╔══════════╗\n[C]║ [B]MIS GUSTOS[/B] ║\n[C]╚══════════╝\n[C]🎮 Juegos RPG\n[C]🍕 Pizza\n[C]🎧 Rock')">
-                        <strong>📜 Caja</strong>Título
+                        onclick="fill('q3', '[C]╔══════════════════╗\n[C]   ✅ [B]GUSTOS[/B]\n[C]╚══════════════════╝\n🎮 Los videojuegos\n🎵 La música\n☕ El café\n\n[C]╔══════════════════╗\n[C]   ❌ [B]DISGUSTOS[/B]\n[C]╚══════════════════╝\n🚫 La gente falsa\n🚫 El drama innecesario\n🚫 Madrugar')">
+                        <strong>� Caja</strong>Completa
                     </div>
                     <div class="chip"
-                        onclick="fill('q3', '✓ El olor a lluvia 🌧️\n✓ Los gatos 🐱\n✓ La sinceridad 💎')"><strong>✅
-                            Check</strong>Lista</div>
-                    <div class="chip" onclick="fill('q3', 'Gaming 🎮 • Anime 🌸 • Sleep 💤 • Music 🎵')"><strong>🔹
-                            Mini</strong>Bullet</div>
-                    <div class="chip" onclick="fill('q3', '[B]TOP 3:[/B]\n1. Dibujar\n2. Editar\n3. Leer')"><strong>🏆
-                            Top</strong>Rank</div>
-                </div>
-            </div>
-
-            <div>
-                <label>4. Disgustos</label>
-                <textarea id="q4"></textarea>
-                <div class="chips">
-                    <div class="chip" onclick="fill('q4', '❌ La gente falsa\n❌ El lag\n❌ El visto')"><strong>❌
-                            Cruz</strong>Lista</div>
-                    <div class="chip" onclick="fill('q4', '[B]🚫 WARNING:[/B]\n╰┈➤ Mentiras\n╰┈➤ Drama\n╰┈➤ Spam')">
-                        <strong>⚠️ Warn</strong>Flechas
+                        onclick="fill('q3', '[B]✅ Me gusta:[/B]\n• El anime y los videojuegos\n• La música Rock/Pop\n• La gente sincera\n\n[B]❌ No me gusta:[/B]\n• Las mentiras\n• El spam\n• La hipocresía')">
+                        <strong>📋
+                            Lista</strong>Bullets
                     </div>
-                    <div class="chip" onclick="fill('q4', '[ [B]NO SOPORTO[/B] ]\nLa hipocresía y las verduras.')">
-                        <strong>🗯️ Brackets</strong>Texto
+                    <div class="chip"
+                        onclick="fill('q3', '[B]GUSTOS:[/B] Gaming 🎮 • Anime 🌸 • Música 🎵 • Dormir 💤\n\n[B]DISGUSTOS:[/B] Drama 🙄 • Lag ⚡ • Visto � • Falsos �')">
+                        <strong>🔹
+                            Mini</strong>Compacto
                     </div>
-                    <div class="chip" onclick="fill('q4', '[S]El brócoli[/S] y madrugar los lunes.')"><strong>😂
-                            Humor</strong>Tachado</div>
-                </div>
-            </div>
-
-            <div>
-                <label>5. Cualidades</label>
-                <input type="text" id="q5" class="txt">
-                <div class="chips">
-                    <div class="chip" onclick="fill('q5', '💎 [B]Oro:[/B] Lealtad.')"><strong>💎 Joya</strong></div>
-                    <div class="chip" onclick="fill('q5', '1. Confianza\n2. Respeto')"><strong>🔢 Num</strong></div>
-                    <div class="chip" onclick="fill('q5', 'Gente [I]chill[/I].')"><strong>🤝 Social</strong></div>
-                    <div class="chip" onclick="fill('q5', 'Buen humor. 😂')"><strong>🤡 Fun</strong></div>
-                </div>
-            </div>
-            <div>
-                <label>6. Cumpleaños</label>
-                <input type="text" id="q6" class="txt">
-                <div class="chips">
-                    <div class="chip" onclick="fill('q6', '[B]📅:[/B] [Día]/[Mes]')"><strong>📅 Date</strong></div>
-                    <div class="chip" onclick="fill('q6', '🎉 [Día] de [Mes].')"><strong>🎂 Party</strong></div>
-                    <div class="chip" onclick="fill('q6', 'Invierno ([Mes]).')"><strong>❄️ Season</strong></div>
-                    <div class="chip" onclick="fill('q6', '♈ [Signo]')"><strong>🔮 Signo</strong></div>
+                    <div class="chip"
+                        onclick="fill('q3', '💚 Amo: El olor a lluvia, los gatos, las series de terror.\n\n💔 Odio: La gente tóxica, las verduras, y que me dejen en visto.')">
+                        <strong>💚💔
+                            Amor/Odio</strong>Emojis
+                    </div>
                 </div>
             </div>
 
             <div class="full">
-                <label>7. Hobbies / Datos</label>
+                <label>4. Menciona cualidades que aprecias en una persona</label>
+                <textarea id="q4"></textarea>
+                <div class="chips">
+                    <div class="chip"
+                        onclick="fill('q4', '[B]💎 Cualidades que valoro:[/B]\n✧ Lealtad\n✧ Sinceridad\n✧ Buen humor\n✧ Respeto')">
+                        <strong>💎 Joyas</strong>Lista
+                    </div>
+                    <div class="chip"
+                        onclick="fill('q4', 'Aprecio a la gente que es [I]real[/I], que no finge ser quien no es. La honestidad y el respeto son clave para mí.')">
+                        <strong>💬 Texto</strong>Narrativo
+                    </div>
+                    <div class="chip"
+                        onclick="fill('q4', '[C]╔════════════════╗\n[C]  [B]VALORO EN TI[/B]\n[C]╚════════════════╝\n[C]🤝 Lealtad\n[C]💬 Comunicación\n[C]😂 Humor\n[C]💯 Autenticidad')">
+                        <strong>� Caja</strong>Centrado
+                    </div>
+                    <div class="chip"
+                        onclick="fill('q4', '1. Que sea leal 🤝\n2. Que tenga humor 😂\n3. Que sea respetuoso 🙏\n4. Que sea chill ☕')">
+                        <strong>� Ranking</strong>Top
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <label>5. ¿Cuándo es tu cumpleaños?</label>
+                <input type="text" id="q5" class="txt">
+                <div class="chips">
+                    <div class="chip" onclick="fill('q5', '[B]📅 Fecha:[/B] [Día] de [Mes]')"><strong>� Fecha</strong>
+                    </div>
+                    <div class="chip" onclick="fill('q5', '🎂 Celebro el [Día]/[Mes]. ¡Apúntenlo!')"><strong>🎂
+                            Party</strong></div>
+                    <div class="chip" onclick="fill('q5', '♈ Soy [Signo]. Nací el [Día] de [Mes].')"><strong>🔮
+                            Signo</strong></div>
+                    <div class="chip" onclick="fill('q5', '❄️ Invierno ([Mes]). Sí, hace frío cuando cumplo.')">
+                        <strong>🌡️ Estación</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <label>6. Cuéntanos un dato sobre ti</label>
+                <input type="text" id="q6" class="txt">
+                <div class="chips">
+                    <div class="chip" onclick="fill('q6', '👀 [B]Dato curioso:[/B] Soy zurdo/a.')"><strong>�
+                            Curioso</strong></div>
+                    <div class="chip" onclick="fill('q6', '🦉 Soy una persona nocturna. 3AM Club.')"><strong>🦉
+                            Nocturno</strong></div>
+                    <div class="chip" onclick="fill('q6', '😱 Tengo fobia a [algo]. No pregunten.')"><strong>😱
+                            Fobia</strong></div>
+                    <div class="chip" onclick="fill('q6', '🎸 Toco un instrumento / Hago [hobby].')"><strong>🎸
+                            Talento</strong></div>
+                </div>
+            </div>
+
+            <div class="full">
+                <label>7. ¿Qué sueles hacer en tu tiempo libre?</label>
                 <textarea id="q7"></textarea>
                 <div class="chips">
                     <div class="chip"
-                        onclick="fill('q7', '[B]🎸 Hobby:[/B] Tocar guitarra.\n[B]👀 Dato:[/B] Soy zurdo.')"><strong>🎸
-                            Mixto</strong>Dato</div>
-                    <div class="chip" onclick="fill('q7', 'Soy nocturno 🦉. 3AM Club.')"><strong>🦉 Hábito</strong>Pers
+                        onclick="fill('q7', '[B]� Gaming:[/B] Juego [juegos]\n[B]📺 Series:[/B] Maratón de lo que sea\n[B]🎵 Música:[/B] Escucho de todo')">
+                        <strong>📋
+                            Ficha</strong>Hobbies
                     </div>
                     <div class="chip"
-                        onclick="fill('q7', '[C]╔══════════════╗\n[C]  🎨 Artista Digital\n[C]  🎮 Gamer Casual\n[C]╚══════════════╝')">
-                        <strong>📦 Caja</strong>Decor
+                        onclick="fill('q7', 'En mi tiempo libre suelo jugar videojuegos, ver series/anime y escuchar música. También me gusta [hobby].')">
+                        <strong>💬 Texto</strong>Narrativo
                     </div>
-                    <div class="chip" onclick="fill('q7', 'Tengo fobia a las alturas 🏔️.')"><strong>😱
-                            Miedo</strong>Info</div>
+                    <div class="chip"
+                        onclick="fill('q7', '[C]╔══════════════════╗\n[C]  [B]TIEMPO LIBRE[/B]\n[C]╚══════════════════╝\n[C]🎮 Videojuegos\n[C]📺 Series/Anime\n[C]🎨 Dibujar\n[C]💤 Dormir')">
+                        <strong>📦 Caja</strong>Centrado
+                    </div>
+                    <div class="chip"
+                        onclick="fill('q7', '• Jugar 🎮\n• Dibujar 🎨\n• Leer 📚\n• Escuchar música 🎧\n• Procrastinar 💀')">
+                        <strong>�
+                            Lista</strong>Bullets
+                    </div>
                 </div>
             </div>
 
             <div class="full">
-                <label>8. Favoritos</label>
+                <label>8. ¿Película favorita? ¿Serie favorita? ¿Por qué?</label>
                 <textarea id="q8" style="height:120px;"></textarea>
                 <div class="chips">
                     <div class="chip"
-                        onclick="fill('q8', '[C]🎧 [B]NOW PLAYING[/B] 🎧\n[C]0:45 ━━●─────── 3:20\n[C]⇆ㅤ◁ㅤ❚❚ㅤ▷ㅤ↻\n[C][I]Canción - Artista[/I]')">
-                        <strong>🎵 Player</strong>Spotify
+                        onclick="fill('q8', '[B]🎬 Película favorita:[/B] [Película]\n💬 Me gusta porque [razón].\n\n[B]📺 Serie favorita:[/B] [Serie]\n💬 La recomiendo porque [razón].')">
+                        <strong>📋 Ficha</strong>Detallada
                     </div>
                     <div class="chip"
-                        onclick="fill('q8', '[B]🎬 Peli:[/B] Terror\n[B]📺 Serie:[/B] TWD\n[B]📚 Libro:[/B] Fantasía')">
-                        <strong>🎬 Ficha</strong>Media
+                        onclick="fill('q8', 'Mi peli favorita es [Película] porque [razón]. Y mi serie favorita es [Serie], la amo porque [razón].')">
+                        <strong>💬 Texto</strong>Narrativo
                     </div>
-                    <div class="chip" onclick="fill('q8', 'Fan de Marvel, Star Wars y el Anime Shonen.')"><strong>🍿
-                            Texto</strong>Fan</div>
                     <div class="chip"
-                        onclick="fill('q8', '[B]Top Series:[/B]\n1. Breaking Bad\n2. Arcane\n3. The Boys')"><strong>📺
-                            Rank</strong>Top 3</div>
+                        onclick="fill('q8', '[C]🎬 [B]TOP PELÍCULAS[/B]\n1. [Película 1]\n2. [Película 2]\n3. [Película 3]\n\n[C]📺 [B]TOP SERIES[/B]\n1. [Serie 1]\n2. [Serie 2]\n3. [Serie 3]')">
+                        <strong>�
+                            Ranking</strong>Top 3
+                    </div>
+                    <div class="chip"
+                        onclick="fill('q8', '[C]🎧 [B]NOW WATCHING[/B] 📺\n[C]Ep 5 ━━●─────── Ep 12\n[C]⇆ㅤ◁ㅤ❚❚ㅤ▷ㅤ↻\n[C][I][Serie] - Temporada [X][/I]')">
+                        <strong>🎵
+                            Player</strong>Aesthetic
+                    </div>
                 </div>
             </div>
 
             <div class="full">
                 <label>Despedida</label>
-                <input type="text" id="outro" class="txt" value="¡Gracias por leer! [C]">
+                <input type="text" id="outro" class="txt" value="¡Gracias por leer! ✨">
                 <div class="chips">
                     <div class="chip" onclick="fill('outro', '[C]✨ Gracias por leer. ¡Mi priv está abierto! ✨')">
                         <strong>✨ Soft</strong>
                     </div>
-                    <div class="chip" onclick="fill('outro', '[C][B]GAME OVER.[/B] Insert Coin. 🪙')"><strong>🎮
-                            Gamer</strong></div>
+                    <div class="chip" onclick="fill('outro', '[C][B]GAME OVER.[/B] Insert Coin para chatear. 🪙')">
+                        <strong>🎮
+                            Gamer</strong>
+                    </div>
                     <div class="chip" onclick="fill('outro', '[C]🥀 Fin del comunicado. Cambio y fuera.')"><strong>🥀
-                            Sad</strong></div>
-                    <div class="chip" onclick="fill('outro', '[C]👻 [I]User has disconnected...[/I]')"><strong>💻
+                            Formal</strong></div>
+                    <div class="chip"
+                        onclick="fill('outro', '[C]👻 [I]User has disconnected...[/I] (mentira, escríbeme)')"><strong>💻
                             Tech</strong></div>
                 </div>
             </div>
@@ -862,40 +912,40 @@
 
             // ESTILOS HEAVY DETAIL
             if (st === 'classic') {
-                t = `[C]╔══════════════════════════════╗\n[C]║      TAG DE PRESENTACIÓN     ║\n[C]╚══════════════════════════════╝\n\n[C]${v.in}\n\n[C]┌─────── [B]01. IDENTIDAD[/B] ───────┐\n[C]${v.q1}\n\n[C]┌──────── [B]02. ORIGEN[/B] ────────┐\n[C]${v.q2}\n\n[C]┌──────── [B]03. GUSTOS[/B] ────────┐\n${v.q3}\n\n[C]┌────── [B]04. DISGUSTOS[/B] ───────┐\n${v.q4}\n\n[B]➤ CUALIDADES:[/B] ${v.q5}\n[B]➤ FECHA:[/B] ${v.q6}\n\n[C]┌──────── [B]EXTRAS[/B] ─────────┐\n${v.q7}\n\n[C]┌─────── [B]FAVORITOS[/B] ───────┐\n${v.q8}\n\n[C]══════════════════════════════\n[C]${v.out}`;
+                t = `[C]╔══════════════════════════════╗\n[C]║      TAG DE PRESENTACIÓN     ║\n[C]╚══════════════════════════════╝\n\n[C]${v.in}\n\n[C]┌─── [B]01. NOMBRE Y APODOS[/B] ───┐\n${v.q1}\n\n[C]┌─── [B]02. ORIGEN Y KYODO[/B] ───┐\n${v.q2}\n\n[C]┌─── [B]03. GUSTOS Y DISGUSTOS[/B] ───┐\n${v.q3}\n\n[C]┌─── [B]04. CUALIDADES QUE VALORO[/B] ───┐\n${v.q4}\n\n[B]➤ CUMPLEAÑOS:[/B] ${v.q5}\n[B]➤ DATO CURIOSO:[/B] ${v.q6}\n\n[C]┌─── [B]05. TIEMPO LIBRE[/B] ───┐\n${v.q7}\n\n[C]┌─── [B]06. PELIS Y SERIES FAVORITAS[/B] ───┐\n${v.q8}\n\n[C]══════════════════════════════\n[C]${v.out}`;
             }
             else if (st === 'magazine') {
-                t = `[C]╔══════════════════════════════╗\n[C]║     📰 THE DAILY TAG 📰      ║\n[C]╚══════════════════════════════╝\n[C][I]Vol. 1 | Edición Especial: Nuevo Usuario[/I]\n\n[C]${v.in}\n\n[C]──────────────\n[C][B]⚡ TITULARES PRINCIPALES ⚡[/B]\n[C]──────────────\n\n[B]∎ PERFIL DEL SUJETO:[/B]\n${v.q1}\n${v.q2}\n\n[B]∎ TENDENCIAS (Gustos):[/B]\n${v.q3}\n\n[B]∎ POLÉMICA (Disgustos):[/B]\n${v.q4}\n\n[C]──────────────\n[B]🎂 FECHA:[/B] ${v.q6} | [B]💎 VALOR:[/B] ${v.q5}\n[C]──────────────\n\n[B]📢 COLUMNA DE GOSSIP:[/B]\n${v.q7}\n\n[B]🎬 RESEÑAS:[/B]\n${v.q8}\n\n[C]||||||||||||||||||||||||\n[C]${v.out}`;
+                t = `[C]╔══════════════════════════════╗\n[C]║     📰 THE DAILY TAG 📰      ║\n[C]╚══════════════════════════════╝\n[C][I]Vol. 1 | Edición Especial: Nuevo Usuario[/I]\n\n[C]${v.in}\n\n[C]──────────────\n[C][B]⚡ TITULARES PRINCIPALES ⚡[/B]\n[C]──────────────\n\n[B]∎ NOMBRE Y APODOS:[/B]\n${v.q1}\n\n[B]∎ ORIGEN / CÓMO LLEGUÉ A KYODO:[/B]\n${v.q2}\n\n[B]∎ GUSTOS Y DISGUSTOS:[/B]\n${v.q3}\n\n[B]∎ CUALIDADES QUE VALORO:[/B]\n${v.q4}\n\n[C]──────────────\n[B]🎂 CUMPLEAÑOS:[/B] ${v.q5}\n[B]� DATO:[/B] ${v.q6}\n[C]──────────────\n\n[B]📢 TIEMPO LIBRE:[/B]\n${v.q7}\n\n[B]🎬 PELIS Y SERIES:[/B]\n${v.q8}\n\n[C]||||||||||||||||||||||||\n[C]${v.out}`;
             }
             else if (st === 'terminal') {
-                t = `[C]💻 [B]ROOT@SYSTEM:~#[/B] ./init_tag.sh\n[C]Loading Core... [■■■■■■■■■■] 100%\n\n[C]${v.in}\n\n[B]root@user:~# cat identity.txt[/B]\n[C]> ID: ${v.q1}\n[C]> ORIGIN: ${v.q2}\n\n[B]root@user:~# loading prefs...[/B]\n[C][■■■■■■■■■□] 90%\n${v.q3}\n\n[B]root@user:~# error_log.txt[/B]\n[C][■■■□□□□□□□] 30%\n${v.q4}\n\n[B]root@user:~# scan stats[/B]\n[+] VAL: ${v.q5}\n[+] DATE: ${v.q6}\n\n[B]root@user:~# access media_db[/B]\n${v.q8}\n\n[B]root@user:~# tail extra.log[/B]\n${v.q7}\n\n[C]>>> [I]Session Closed.[/I]\n[C]${v.out}`;
+                t = `[C]💻 [B]ROOT@SYSTEM:~#[/B] ./init_tag.sh\n[C]Loading Core... [■■■■■■■■■■] 100%\n\n[C]${v.in}\n\n[B]root@user:~# cat nombre_apodos.txt[/B]\n${v.q1}\n\n[B]root@user:~# cat origen_kyodo.txt[/B]\n${v.q2}\n\n[B]root@user:~# loading prefs...[/B]\n[C][■■■■■■■■■□] 90%\n${v.q3}\n\n[B]root@user:~# cat cualidades.txt[/B]\n${v.q4}\n\n[B]root@user:~# scan stats[/B]\n[+] CUMPLE: ${v.q5}\n[+] DATO: ${v.q6}\n\n[B]root@user:~# cat tiempo_libre.txt[/B]\n${v.q7}\n\n[B]root@user:~# access media_db[/B]\n${v.q8}\n\n[C]>>> [I]Session Closed.[/I]\n[C]${v.out}`;
             }
             else if (st === 'anime') {
-                t = `[C]★・・・・・・★・・・・・・★\n[C]「 [B]TAG DE PRESENTACIÓN[/B] 」\n[C]★・・・・・・★・・・・・・★\n\n[C]${v.in}\n\n[C]『 [B]名前 (Identidad)[/B] 』\n[C]${v.q1}\n\n[C]『 [B]出身 (Origen)[/B] 』\n[C]${v.q2}\n\n[C]┏━━━━━━━━━━━━━━━┓\n[C]   好き (Gustos)\n[C]┗━━━━━━━━━━━━━━━┛\n${v.q3}\n\n[C]┏━━━━━━━━━━━━━━━┓\n[C]   嫌い (Disgustos)\n[C]┗━━━━━━━━━━━━━━━┛\n${v.q4}\n\n[C]『 [B]データ (Datos)[/B] 』\n[C]${v.q6} / ${v.q5}\n\n[C]『 [B]趣味 (Extra)[/B] 』\n${v.q7}\n\n[C]『 [B]お気に入り (Favs)[/B] 』\n${v.q8}\n\n[C]終 ${v.out}`;
+                t = `[C]★・・・・・・★・・・・・・★\n[C]「 [B]TAG DE PRESENTACIÓN[/B] 」\n[C]★・・・・・・★・・・・・・★\n\n[C]${v.in}\n\n[C]『 [B]名前 (Nombre y Apodos)[/B] 』\n${v.q1}\n\n[C]『 [B]出身 (Origen y Kyodo)[/B] 』\n${v.q2}\n\n[C]┏━━━━━━━━━━━━━━━┓\n[C]   好き嫌い (Gustos/Disgustos)\n[C]┗━━━━━━━━━━━━━━━┛\n${v.q3}\n\n[C]『 [B]美徳 (Cualidades)[/B] 』\n${v.q4}\n\n[C]『 [B]データ (Datos)[/B] 』\n[C]🎂 ${v.q5}\n[C]👀 ${v.q6}\n\n[C]『 [B]趣味 (Tiempo Libre)[/B] 』\n${v.q7}\n\n[C]『 [B]映画とシリーズ (Pelis/Series)[/B] 』\n${v.q8}\n\n[C]終 ${v.out}`;
             }
             else if (st === 'neon') {
-                t = `[C]❇️ ══════ [B]TAG DE PRESENTACIÓN[/B] ══════ ❇️\n\n[C]${v.in}\n\n[C]╔════ [B]⚡ DATOS ⚡[/B] ════╗\n[C]👤 ${v.q1}\n[C]🌍 ${v.q2}\n[C]╚══════════════════╝\n\n[C]🔮 [B]GUSTOS:[/B]\n${v.q3}\n\n[C]☢️ [B]DISGUSTOS:[/B]\n${v.q4}\n\n[C]💠 [B]INFO:[/B] ${v.q6} | ${v.q5}\n\n[C]🎥 [B]MEDIA:[/B]\n${v.q8}\n\n[C]📜 [B]EXTRA:[/B]\n${v.q7}\n\n[C]❇️ ════════════════════════ ❇️\n[C]${v.out}`;
+                t = `[C]❇️ ══════ [B]TAG DE PRESENTACIÓN[/B] ══════ ❇️\n\n[C]${v.in}\n\n[C]╔════ [B]⚡ IDENTIDAD ⚡[/B] ════╗\n${v.q1}\n${v.q2}\n[C]╚══════════════════╝\n\n[C]🔮 [B]GUSTOS Y DISGUSTOS:[/B]\n${v.q3}\n\n[C]💎 [B]CUALIDADES QUE VALORO:[/B]\n${v.q4}\n\n[C]💠 [B]CUMPLE:[/B] ${v.q5}\n[C]👀 [B]DATO:[/B] ${v.q6}\n\n[C]� [B]TIEMPO LIBRE:[/B]\n${v.q7}\n\n[C]🎥 [B]PELIS Y SERIES:[/B]\n${v.q8}\n\n[C]❇️ ════════════════════════ ❇️\n[C]${v.out}`;
             }
             else if (st === 'dark') {
-                t = `[C]▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓\n[C]   [B]TAG DE PRESENTACIÓN[/B]   \n[C]▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓\n\n[C]${v.in}\n\n[B]█ 01. ID[/B]\n[C]${v.q1}\n\n[B]█ 02. SRC[/B]\n[C]${v.q2}\n\n[B]█ 03. POS (+)[/B]\n${v.q3}\n\n[B]█ 04. NEG (-)[/B]\n${v.q4}\n\n[B]█ 05. DATA[/B]\n[C]${v.q6} | ${v.q5}\n\n[B]█ 06. EXTRA[/B]\n${v.q7}\n\n[B]█ 07. MEDIA[/B]\n${v.q8}\n\n[C]▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀\n[C][S]${v.out}[/S]`;
+                t = `[C]▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓\n[C]   [B]TAG DE PRESENTACIÓN[/B]   \n[C]▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓\n\n[C]${v.in}\n\n[B]█ 01. NOMBRE Y APODOS[/B]\n${v.q1}\n\n[B]█ 02. ORIGEN / KYODO[/B]\n${v.q2}\n\n[B]█ 03. GUSTOS Y DISGUSTOS[/B]\n${v.q3}\n\n[B]█ 04. CUALIDADES[/B]\n${v.q4}\n\n[B]█ 05. DATA[/B]\n[C]🎂 ${v.q5} | 👀 ${v.q6}\n\n[B]█ 06. TIEMPO LIBRE[/B]\n${v.q7}\n\n[B]█ 07. PELIS/SERIES[/B]\n${v.q8}\n\n[C]▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀\n[C]${v.out}`;
             }
             else if (st === 'playlist') {
-                t = `[C]╔══════════════════════════╗\n[C]║ 🎶 TAG DE PRESENTACIÓN 🎶 ║\n[C]╚══════════════════════════╝\n\n[C]${v.in}\n\n[C]▶️ [B]Track 01: Intro[/B]\n[C]Name: ${v.q1}\n[C]From: ${v.q2}\n\n[C]▶️ [B]Track 02: Preferences[/B]\n${v.q3}\n\n[C]▶️ [B]Track 03: Skip[/B]\n${v.q4}\n\n[C]▶️ [B]Track 04: Details[/B]\n[C]${v.q5} | ${v.q6}\n\n[C]▶️ [B]Track 05: Bonus[/B]\n${v.q7}\n\n[C]▶️ [B]Track 06: Media[/B]\n${v.q8}\n\n[C]▶️ [B]Track 07: Outro[/B]\n[C]${v.out}\n\n[C]0:00 ━━●─────────────── 3:00\n[C]⇆ㅤㅤ◁ㅤㅤ❚❚ㅤㅤ▷ㅤㅤ↻\n[C]🔊 Vol: ▮▮▮▮▮▮▮▮▯▯`;
+                t = `[C]╔══════════════════════════╗\n[C]║ 🎶 TAG DE PRESENTACIÓN 🎶 ║\n[C]╚══════════════════════════╝\n\n[C]${v.in}\n\n[C]▶️ [B]Track 01: Nombre y Apodos[/B]\n${v.q1}\n\n[C]▶️ [B]Track 02: Origen / Kyodo[/B]\n${v.q2}\n\n[C]▶️ [B]Track 03: Gustos y Disgustos[/B]\n${v.q3}\n\n[C]▶️ [B]Track 04: Cualidades[/B]\n${v.q4}\n\n[C]▶️ [B]Track 05: Stats[/B]\n[C]🎂 ${v.q5} | 👀 ${v.q6}\n\n[C]▶️ [B]Track 06: Tiempo Libre[/B]\n${v.q7}\n\n[C]▶️ [B]Track 07: Pelis y Series[/B]\n${v.q8}\n\n[C]▶️ [B]Track 08: Outro[/B]\n[C]${v.out}\n\n[C]0:00 ━━●─────────────── 3:00\n[C]⇆ㅤㅤ◁ㅤㅤ❚❚ㅤㅤ▷ㅤㅤ↻\n[C]🔊 Vol: ▮▮▮▮▮▮▮▮▯▯`;
             }
             else if (st === 'royal') {
-                t = `[C]⚜️ ════════ [B]TAG DE PRESENTACIÓN[/B] ════════ ⚜️\n\n[C]${v.in}\n\n[C]🏰 [B]IDENTIDAD[/B]\n[C]${v.q1}\n[C]${v.q2}\n\n[C]⚜️ [B]PREDILECCIONES[/B] ⚜️\n${v.q3}\n\n[C]⚔️ [B]AVERSIÓN[/B] ⚔️\n${v.q4}\n\n[C]📜 [B]MANUSCRITO[/B]\n[C]Fecha: ${v.q6}\n[C]Virtud: ${v.q5}\n\n[C]🏺 [B]CURIOSIDAD[/B]\n${v.q7}\n\n[C]🎭 [B]ENTRETENIMIENTO[/B]\n${v.q8}\n\n[C]⚜️ ══════════════════════════════ ⚜️\n[C]${v.out}`;
+                t = `[C]⚜️ ════════ [B]TAG DE PRESENTACIÓN[/B] ════════ ⚜️\n\n[C]${v.in}\n\n[C]🏰 [B]NOMBRE Y APODOS[/B]\n${v.q1}\n\n[C]🌍 [B]ORIGEN / KYODO[/B]\n${v.q2}\n\n[C]⚜️ [B]GUSTOS Y DISGUSTOS[/B] ⚜️\n${v.q3}\n\n[C]💎 [B]CUALIDADES QUE VALORO[/B]\n${v.q4}\n\n[C]📜 [B]MANUSCRITO[/B]\n[C]🎂 Cumpleaños: ${v.q5}\n[C]👀 Dato: ${v.q6}\n\n[C]🏺 [B]TIEMPO LIBRE[/B]\n${v.q7}\n\n[C]🎭 [B]PELIS Y SERIES FAVORITAS[/B]\n${v.q8}\n\n[C]⚜️ ══════════════════════════════ ⚜️\n[C]${v.out}`;
             }
             else if (st === 'vapor') {
-                t = `[C]💾 [B]ＶＡＰＯＲ　ＴＡＧ[/B] 💾\n\n[C]${v.in}\n\n[C]ＰＬＡＹＥＲ： ${v.q1}\n[C]ＬＯＣＡＴＩＯＮ： ${v.q2}\n\n[C]▀▄▀▄▀▄ [B]ＡＥＳＴＨＥＴＩＣＳ[/B] ▄▀▄▀▄▀\n${v.q3}\n\n[C]🚫 [B]ＥＲＲＯＲ　４０４[/B]\n${v.q4}\n\n[C]📂 [B]ＤＡＴＡ[/B]\n[C]${v.q5} ／ ${v.q6}\n\n[C]📼 [B]ＶＨＳ　ＴＡＰＥ[/B]\n${v.q8}\n\n[C]🌊 ${v.out}`;
+                t = `[C]💾 [B]ＶＡＰＯＲ　ＴＡＧ[/B] 💾\n\n[C]${v.in}\n\n[C]ＮＡＭＥ：\n${v.q1}\n\n[C]ＬＯＣＡＴＩＯＮ：\n${v.q2}\n\n[C]▀▄▀▄▀▄ [B]ＡＥＳＴＨＥＴＩＣＳ[/B] ▄▀▄▀▄▀\n${v.q3}\n\n[C]� [B]ＶＡＬＵＥＳ[/B]\n${v.q4}\n\n[C]📂 [B]ＤＡＴＡ[/B]\n[C]🎂 ${v.q5} ／ 👀 ${v.q6}\n\n[C]🎮 [B]ＦＲＥＥ　ＴＩＭＥ[/B]\n${v.q7}\n\n[C]📼 [B]ＭＥＤＩＡ[/B]\n${v.q8}\n\n[C]🌊 ${v.out}`;
             }
             else if (st === 'gothic') {
-                t = `[C]⸸ ══════ [B]TAG DE PRESENTACIÓN[/B] ══════ ⸸\n\n[C]${v.in}\n\n[C]🧛🏻‍♂️ [B]Nombre:[/B] ${v.q1}\n[C]🌑 [B]Origen:[/B] ${v.q2}\n\n[C]🦇 [B]Placeres:[/B]\n${v.q3}\n\n[C]⚰️ [B]Desprecios:[/B]\n${v.q4}\n\n[C]🕯️ [B]Vida:[/B] ${v.q6}\n[C]🕷️ [B]Alma:[/B] ${v.q5}\n\n[C]🥀 [B]Final:[/B] ${v.out}`;
+                t = `[C]⸸ ══════ [B]TAG DE PRESENTACIÓN[/B] ══════ ⸸\n\n[C]${v.in}\n\n[C]🧛🏻‍♂️ [B]Nombre y Apodos:[/B]\n${v.q1}\n\n[C]🌑 [B]Origen / Kyodo:[/B]\n${v.q2}\n\n[C]🦇 [B]Gustos y Disgustos:[/B]\n${v.q3}\n\n[C]💀 [B]Cualidades:[/B]\n${v.q4}\n\n[C]🕯️ [B]Cumple:[/B] ${v.q5}\n[C]🕷️ [B]Dato:[/B] ${v.q6}\n\n[C]⚰️ [B]Tiempo Libre:[/B]\n${v.q7}\n\n[C]🎬 [B]Pelis/Series:[/B]\n${v.q8}\n\n[C]🥀 [B]Final:[/B] ${v.out}`;
             }
             else if (st === 'aesthetic') {
-                t = `[C]☁️ ᴛᴀɢ ᴅᴇ ᴘʀᴇsᴇɴᴛᴀᴄɪᴏɴ ☁️\n\n[C]${v.in}\n\n[C]╭ ┄ ┄ ┄ ┄ ┄ ┄ ┄ ┄ ╮\n[C]   ✎ [B]PROFILE[/B]\n[C]╰ ┄ ┄ ┄ ┄ ┄ ┄ ┄ ┄ ╯\n\n[C]ʚĭɞ ${v.q1}\n[C]ʚĭɞ ${v.q2}\n\n[C]⛓ [B]Likes & Nopes[/B]\n${v.q3}\n\n${v.q4}\n\n[C]♡ [B]Details:[/B] ${v.q6} / ${v.q5}\n\n[C]♡ [B]Media & Extra:[/B]\n${v.q8}\n${v.q7}\n\n[C]       ｡ﾟﾟ･｡･ﾟﾟ｡\n[C]       ﾟ。    　｡ﾟ\n[C]       　ﾟ･｡･ﾟ\n[C]${v.out}`;
+                t = `[C]☁️ ᴛᴀɢ ᴅᴇ ᴘʀᴇsᴇɴᴛᴀᴄɪᴏɴ ☁️\n\n[C]${v.in}\n\n[C]╭ ┄ ┄ ┄ ┄ ┄ ┄ ┄ ┄ ╮\n[C]   ✎ [B]NOMBRE Y APODOS[/B]\n[C]╰ ┄ ┄ ┄ ┄ ┄ ┄ ┄ ┄ ╯\n${v.q1}\n\n[C]ʚĭɞ [B]Origen / Kyodo[/B]\n${v.q2}\n\n[C]⛓ [B]Gustos & Disgustos[/B]\n${v.q3}\n\n[C]💎 [B]Cualidades[/B]\n${v.q4}\n\n[C]♡ [B]Info:[/B] 🎂 ${v.q5} / 👀 ${v.q6}\n\n[C]♡ [B]Tiempo Libre[/B]\n${v.q7}\n\n[C]♡ [B]Pelis y Series[/B]\n${v.q8}\n\n[C]       ｡ﾟﾟ･｡･ﾟﾟ｡\n[C]       ﾟ。    　｡ﾟ\n[C]       　ﾟ･｡･ﾟ\n[C]${v.out}`;
             }
             else { // Minimal
-                t = `[C]TAG DE PRESENTACIÓN\n\n[C]${v.in}\n\n[B]▪ ID:[/B] ${v.q1}\n[B]▪ ORIGIN:[/B] ${v.q2}\n\n[B]▪ LIKES:[/B]\n${v.q3}\n\n[B]▪ DISLIKES:[/B]\n${v.q4}\n\n[B]▪ INFO:[/B] ${v.q5} | ${v.q6}\n\n[B]▪ EXTRA:[/B]\n${v.q7}\n${v.q8}\n\n[C]${v.out}`;
+                t = `[C]TAG DE PRESENTACIÓN\n\n[C]${v.in}\n\n[B]▪ NOMBRE/APODOS:[/B]\n${v.q1}\n\n[B]▪ ORIGEN/KYODO:[/B]\n${v.q2}\n\n[B]▪ GUSTOS/DISGUSTOS:[/B]\n${v.q3}\n\n[B]▪ CUALIDADES:[/B]\n${v.q4}\n\n[B]▪ CUMPLE:[/B] ${v.q5}\n[B]▪ DATO:[/B] ${v.q6}\n\n[B]▪ TIEMPO LIBRE:[/B]\n${v.q7}\n\n[B]▪ PELIS/SERIES:[/B]\n${v.q8}\n\n[C]${v.out}`;
             }
 
             document.getElementById('final-code').value = t + sign;
