@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TAG GENERATOR v16 (Fixed)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Black+Ops+One&family=Cinzel:wght@900&family=Creepster&family=Dancing+Script:wght@700&family=Frijole&family=Orbitron:wght@900&family=Oswald:wght@700&family=Permanent+Marker&family=Press+Start+2P&family=Rubik+Glitch&family=Special+Elite&family=VT323&display=swap" rel="stylesheet">
+    
+    <style>
+        :root { --bg: #050505; --panel: #0f0f0f; --primary: #00ffcc; --accent: #ff00ff; --text: #eee; --border: #333; }
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 20px; }
+        .container { max-width: 1400px; margin: 0 auto; background: var(--panel); padding: 30px; border-radius: 12px; border: 1px solid var(--border); }
+        
+        h1 { text-align: center; font-family: 'Orbitron', sans-serif; background: linear-gradient(to right, var(--primary), var(--accent)); -webkit-background-clip: text; color: transparent; font-size: 2.5em; margin: 0; text-transform: uppercase; letter-spacing: 2px; }
+        .credit-sub { text-align: center; color: #666; font-size: 0.8em; text-transform: uppercase; letter-spacing: 4px; margin-bottom: 40px; }
+        
+        h2 { border-bottom: 2px solid var(--border); padding-bottom: 10px; color: var(--primary); font-family: 'Oswald', sans-serif; text-transform: uppercase; letter-spacing: 1px; margin-top: 50px; }
+
+        /* === BANNER STUDIO (GRID) === */
+        .studio-layout { display: grid; grid-template-columns: 1fr; gap: 20px; }
+        @media(min-width: 1100px) { .studio-layout { grid-template-columns: 70% 30%; } }
+
+        .canvas-container { background: #080808; border: 2px dashed #444; display: flex; align-items: center; justify-content: center; padding: 10px; border-radius: 8px; min-height: 400px; background-image: radial-gradient(#222 1px, transparent 1px); background-size: 20px 20px; }
+        canvas { max-width: 100%; height: auto; box-shadow: 0 10px 50px rgba(0,0,0,0.8); border: 1px solid #222; }
+
+        .controls-panel { height: 600px; overflow-y: auto; background: #111; padding: 15px; border-radius: 8px; border: 1px solid #222; }
+        .control-block { background: #1a1a1a; padding: 15px; border-radius: 6px; margin-bottom: 12px; border: 1px solid #2a2a2a; }
+        .block-title { color: var(--accent); font-size: 0.75em; font-weight: bold; text-transform: uppercase; display: block; margin-bottom: 10px; border-bottom: 1px solid #333; padding-bottom: 5px; }
+
+        /* Sliders */
+        .slider-row { margin-bottom: 8px; }
+        .slider-info { display: flex; justify-content: space-between; font-size: 0.7em; color: #aaa; margin-bottom: 2px; }
+        input[type="range"] { width: 100%; height: 6px; background: #333; accent-color: var(--primary); border-radius: 3px; cursor: pointer; }
+
+        /* Inputs */
+        input[type="text"], select { width: 100%; padding: 8px; background: #000; border: 1px solid #444; color: #fff; margin-bottom: 5px; font-size: 0.9em; }
+        input[type="file"] { font-size: 0.8em; width: 100%; color: #888; }
+        input[type="color"] { width: 100%; height: 35px; padding: 0; border: none; background: none; cursor: pointer; }
+
+        .btn-action { width: 100%; padding: 15px; background: linear-gradient(135deg, var(--primary), var(--accent)); color: #000; border: none; font-weight: 900; border-radius: 6px; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; margin-top: 10px; transition: 0.3s; }
+        .btn-action:hover { filter: brightness(1.2); box-shadow: 0 0 20px rgba(0, 255, 204, 0.4); }
+
+        /* === TEXT GENERATOR === */
+        .intro-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 8px; margin-bottom: 15px; }
+        .intro-btn { background: #1a1a1a; border: 1px solid #333; color: #aaa; padding: 12px; border-radius: 6px; cursor: pointer; font-size: 0.75em; transition: 0.2s; position: relative; font-weight: bold; display: flex; flex-direction: column; align-items: center; gap: 5px; }
+        .intro-btn:hover { border-color: var(--primary); color: #fff; background: #222; }
+        .intro-btn::after { content: '↻'; position: absolute; top: 2px; right: 4px; opacity: 0.5; font-size: 10px; }
+
+        .text-grid { display: grid; grid-template-columns: 1fr; gap: 20px; margin-top: 20px; }
+        @media(min-width: 800px) { .text-grid { grid-template-columns: 1fr 1fr; } .full { grid-column: span 2; } }
+
+        label { color: #888; font-weight: bold; font-size: 0.85em; display: block; margin-bottom: 5px; }
+        textarea, input.txt { width: 100%; padding: 12px; background: #161616; border: 1px solid #333; color: #fff; border-radius: 4px; box-sizing: border-box; transition: 0.3s; }
+        textarea:focus, input.txt:focus { border-color: var(--primary); background: #1f1f1f; outline: none; }
+        textarea { height: 100px; resize: vertical; }
+
+        /* CHIPS (4 Opcs) */
+        .chips { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 5px; }
+        .chip { background: #0a0a0a; border: 1px solid #2a2a2a; padding: 10px; border-radius: 4px; font-size: 0.7em; color: #888; cursor: pointer; transition: 0.2s; text-align: left; display: flex; flex-direction: column; justify-content: center; min-height: 50px; }
+        .chip:hover { border-color: var(--accent); color: #fff; background: #111; }
+        .chip strong { color: var(--accent); font-size: 1.1em; display: block; margin-bottom: 2px; }
+
+        /* EXPORT STYLES */
+        .style-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 15px; margin-top: 20px; }
+        .style-card { background: #111; border: 1px solid #333; padding: 15px; text-align: center; border-radius: 6px; cursor: pointer; transition: 0.3s; position: relative; overflow: hidden; }
+        .style-card:hover { border-color: var(--primary); transform: translateY(-3px); background: #161616; }
+        .style-card h4 { margin: 0; color: #fff; font-size: 0.9em; font-family: 'Orbitron', sans-serif; }
+        .style-card span { font-size: 0.65em; color: #666; display: block; margin-top: 5px; text-transform: uppercase; }
+
+        #final-code { height: 400px; background: #000; color: #00ffcc; font-family: 'Courier New', monospace; font-size: 0.85em; padding: 15px; border: 1px solid #333; margin-top: 20px; white-space: pre-wrap; border-radius: 4px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>TAG PRESENTACION GENERATOR</h1>
+        <div class="credit-sub">@wodahs7</div>
+    </header>
+
+    <h2>🎨 1. Banner Studio</h2>
+    <div class="studio-layout">
+        <div class="canvas-container">
+            <canvas id="cvs" width="800" height="350"></canvas>
+        </div>
+
+        <div class="controls-panel">
+            <div class="control-block">
+                <span class="block-title">1. Capa Fondo</span>
+                <input type="file" id="bgImg" accept="image/*" onchange="load('bg', this)">
+                <div class="slider-row">
+                    <div class="slider-info"><span>Color Fondo</span></div>
+                    <input type="color" id="bgCol" value="#050505" oninput="render()">
+                </div>
+                <div class="slider-row">
+                    <div class="slider-info"><span>Zoom Fondo</span><span id="l_bgS">1.0</span></div>
+                    <input type="range" id="bgScale" min="1" max="3" step="0.1" value="1" oninput="upd('bgS', this.value)">
+                </div>
+                <div class="slider-row">
+                    <div class="slider-info"><span>Posición Vertical</span><span id="l_bgY">0</span></div>
+                    <input type="range" id="bgY" min="-400" max="400" value="0" oninput="upd('bgY', this.value)">
+                </div>
+                <div class="slider-row">
+                    <div class="slider-info"><span>Oscurecer (Dim)</span><span id="l_bgD">0.3</span></div>
+                    <input type="range" id="bgDim" min="0" max="0.9" step="0.1" value="0.3" oninput="upd('bgD', this.value)">
+                </div>
+            </div>
+
+            <div class="control-block">
+                <span class="block-title">2. Capa Personaje (PNG)</span>
+                <input type="file" id="charImg" accept="image/*" onchange="load('char', this)">
+                <div class="slider-row">
+                    <div class="slider-info"><span>Tamaño</span><span id="l_chS">0.9</span></div>
+                    <input type="range" id="chScale" min="0.1" max="2" step="0.1" value="0.9" oninput="upd('chS', this.value)">
+                </div>
+                <div class="slider-row">
+                    <div class="slider-info"><span>Posición X</span><span id="l_chX">200</span></div>
+                    <input type="range" id="chX" min="-400" max="400" value="200" oninput="upd('chX', this.value)">
+                </div>
+                <div class="slider-row">
+                    <div class="slider-info"><span>Posición Y</span><span id="l_chY">20</span></div>
+                    <input type="range" id="chY" min="-200" max="200" value="20" oninput="upd('chY', this.value)">
+                </div>
+            </div>
+
+            <div class="control-block">
+                <span class="block-title">3. Estilo Visual</span>
+                <select id="layout" onchange="render()">
+                    <option value="clean">Limpio (Clean)</option>
+                    <option value="neon">🔮 Neón Frame</option>
+                    <option value="glass">💎 Glass Box</option>
+                    <option value="cyber">🤖 Cyber Grid</option>
+                    <option value="manga">🗯️ Manga Dots</option>
+                    <option value="cinematic">🎬 Cine Bars</option>
+                    <option value="royal">⚜️ Royal Gold</option>
+                    <option value="card">🃏 Floating Card</option>
+                </select>
+                <div class="slider-row">
+                    <div class="slider-info"><span>Color del Layout</span></div>
+                    <input type="color" id="layCol" value="#00ffcc" oninput="render()">
+                </div>
+            </div>
+
+            <div class="control-block">
+                <span class="block-title">4. Texto</span>
+                <input type="text" id="txt" value="TAG DE PRESENTACIÓN" oninput="render()">
+                <select id="font" onchange="render()">
+                    <option value="Orbitron">Orbitron (Futuro)</option>
+                    <option value="Black Ops One">Militar</option>
+                    <option value="Press Start 2P">Pixel Gamer</option>
+                    <option value="Dancing Script">Manuscrita</option>
+                    <option value="Rubik Glitch">Glitch</option>
+                    <option value="Cinzel">Cinzel (Elegante)</option>
+                    <option value="Creepster">Terror</option>
+                    <option value="Special Elite">Typewriter</option>
+                    <option value="Oswald">Impacto</option>
+                </select>
+                <div class="slider-row" style="display:flex; gap:10px; align-items:center;">
+                    <label style="margin:0; font-size:0.7em;">Degradado:</label>
+                    <input type="checkbox" id="useGrad" checked onchange="render()">
+                </div>
+                <div class="slider-row" style="display:flex; gap:5px;">
+                    <input type="color" id="tc1" value="#ffffff" oninput="render()">
+                    <input type="color" id="tc2" value="#ff00ff" oninput="render()">
+                </div>
+                <div class="slider-row">
+                    <div class="slider-info"><span>Tamaño Fuente</span><span id="l_ts">55</span></div>
+                    <input type="range" id="tsize" min="20" max="120" value="55" oninput="upd('ts', this.value)">
+                </div>
+            </div>
+
+            <button class="btn-action" onclick="dl()">💾 Descargar PNG</button>
+        </div>
+    </div>
+
+    <h2>📝 2. Generador de Respuestas</h2>
+    
+    <div class="control-block" style="border:none; background:transparent; padding:0;">
+        <label style="color:var(--primary); font-size:1em;">CONTEXTO DEL BLOG (Clic para variar)</label>
+        <div class="intro-grid">
+            <button class="intro-btn" onclick="cycle('amino')"><span>🅰️</span>Amino Vet</button>
+            <button class="intro-btn" onclick="cycle('tiktok')"><span>📱</span>TikTok</button>
+            <button class="intro-btn" onclick="cycle('new')"><span>👋</span>Nuevo</button>
+            <button class="intro-btn" onclick="cycle('chill')"><span>☕</span>Chill</button>
+            <button class="intro-btn" onclick="cycle('gamer')"><span>🎮</span>Gamer</button>
+            <button class="intro-btn" onclick="cycle('rol')"><span>🎭</span>Rol</button>
+            <button class="intro-btn" onclick="cycle('art')"><span>🎨</span>Arte</button>
+            <button class="intro-btn" onclick="cycle('old')"><span>🔙</span>Regreso</button>
+        </div>
+        <textarea id="intro" placeholder="El saludo aparecerá aquí..." style="margin-top:10px;"></textarea>
+    </div>
+
+    <div class="text-grid">
+        <div>
+            <label>1. Identidad</label>
+            <input type="text" id="q1" class="txt">
+            <div class="chips">
+                <div class="chip" onclick="fill('q1', '╭──────────╮\n│ 👤 [B]User:[/B] [ID]\n│ 🏷️ [B]Alias:[/B] [Apodo]\n╰──────────╯')"><strong>📦 Caja</strong>Estética</div>
+                <div class="chip" onclick="fill('q1', '[B]Nombre:[/B] [Nombre]\n[B]Apodo:[/B] [Apodo]\n[B]Estado:[/B] En línea 🟢')"><strong>📋 Ficha</strong>Datos</div>
+                <div class="chip" onclick="fill('q1', '>>> [I]Identity Loaded.[/I]\n[B]Subject:[/B] [Apodo].')"><strong>💻 Code</strong>Terminal</div>
+                <div class="chip" onclick="fill('q1', '[B]Class:[/B] Humano\n[B]Name:[/B] [Nombre]\n[B]Lvl:[/B] 1')"><strong>⚔️ RPG</strong>Juego</div>
+            </div>
+        </div>
+
+        <div>
+            <label>2. Origen</label>
+            <input type="text" id="q2" class="txt">
+            <div class="chips">
+                <div class="chip" onclick="fill('q2', 'Tras la caída de Amino, busqué un nuevo hogar y llegué aquí.')"><strong>🅰️ Amino</strong>Refugio</div>
+                <div class="chip" onclick="fill('q2', 'Vi un video en TikTok sobre esta app y decidí probar suerte.')"><strong>📱 TikTok</strong>Viral</div>
+                <div class="chip" onclick="fill('q2', '[B]📍 Base:[/B] [País]\n[B]📡 Vía:[/B] YouTube.')"><strong>🌎 Info</strong>Iconos</div>
+                <div class="chip" onclick="fill('q2', 'Un amigo me invitó a formar parte de esta comunidad.')"><strong>🤝 Amigo</strong>Invitado</div>
+            </div>
+        </div>
+
+        <div>
+            <label>3. Gustos</label>
+            <textarea id="q3"></textarea>
+            <div class="chips">
+                <div class="chip" onclick="fill('q3', '[C]╔══════════╗\n[C]║ [B]MIS GUSTOS[/B] ║\n[C]╚══════════╝\n[C]🎮 Juegos RPG\n[C]🍕 Pizza\n[C]🎧 Rock')"><strong>📜 Caja</strong>Título</div>
+                <div class="chip" onclick="fill('q3', '✓ El olor a lluvia 🌧️\n✓ Los gatos 🐱\n✓ La sinceridad 💎')"><strong>✅ Check</strong>Lista</div>
+                <div class="chip" onclick="fill('q3', 'Gaming 🎮 • Anime 🌸 • Sleep 💤 • Music 🎵')"><strong>🔹 Mini</strong>Bullet</div>
+                <div class="chip" onclick="fill('q3', '[B]TOP 3:[/B]\n1. Dibujar\n2. Editar\n3. Leer')"><strong>🏆 Top</strong>Rank</div>
+            </div>
+        </div>
+
+        <div>
+            <label>4. Disgustos</label>
+            <textarea id="q4"></textarea>
+            <div class="chips">
+                <div class="chip" onclick="fill('q4', '❌ La gente falsa\n❌ El lag\n❌ El visto')"><strong>❌ Cruz</strong>Lista</div>
+                <div class="chip" onclick="fill('q4', '[B]🚫 WARNING:[/B]\n╰┈➤ Mentiras\n╰┈➤ Drama\n╰┈➤ Spam')"><strong>⚠️ Warn</strong>Flechas</div>
+                <div class="chip" onclick="fill('q4', '[ [B]NO SOPORTO[/B] ]\nLa hipocresía y las verduras.')"><strong>🗯️ Brackets</strong>Texto</div>
+                <div class="chip" onclick="fill('q4', '[S]El brócoli[/S] y madrugar los lunes.')"><strong>😂 Humor</strong>Tachado</div>
+            </div>
+        </div>
+
+        <div>
+            <label>5. Cualidades</label>
+            <input type="text" id="q5" class="txt">
+            <div class="chips">
+                <div class="chip" onclick="fill('q5', '💎 [B]Oro:[/B] Lealtad.')"><strong>💎 Joya</strong></div>
+                <div class="chip" onclick="fill('q5', '1. Confianza\n2. Respeto')"><strong>🔢 Num</strong></div>
+                <div class="chip" onclick="fill('q5', 'Gente [I]chill[/I].')"><strong>🤝 Social</strong></div>
+                <div class="chip" onclick="fill('q5', 'Buen humor. 😂')"><strong>🤡 Fun</strong></div>
+            </div>
+        </div>
+        <div>
+            <label>6. Cumpleaños</label>
+            <input type="text" id="q6" class="txt">
+            <div class="chips">
+                <div class="chip" onclick="fill('q6', '[B]📅:[/B] [Día]/[Mes]')"><strong>📅 Date</strong></div>
+                <div class="chip" onclick="fill('q6', '🎉 [Día] de [Mes].')"><strong>🎂 Party</strong></div>
+                <div class="chip" onclick="fill('q6', 'Invierno ([Mes]).')"><strong>❄️ Season</strong></div>
+                <div class="chip" onclick="fill('q6', '♈ [Signo]')"><strong>🔮 Signo</strong></div>
+            </div>
+        </div>
+
+        <div class="full">
+            <label>7. Hobbies / Datos</label>
+            <textarea id="q7"></textarea>
+            <div class="chips">
+                <div class="chip" onclick="fill('q7', '[B]🎸 Hobby:[/B] Tocar guitarra.\n[B]👀 Dato:[/B] Soy zurdo.')"><strong>🎸 Mixto</strong>Dato</div>
+                <div class="chip" onclick="fill('q7', 'Soy nocturno 🦉. 3AM Club.')"><strong>🦉 Hábito</strong>Pers</div>
+                <div class="chip" onclick="fill('q7', '[C]╔══════════════╗\n[C]  🎨 Artista Digital\n[C]  🎮 Gamer Casual\n[C]╚══════════════╝')"><strong>📦 Caja</strong>Decor</div>
+                <div class="chip" onclick="fill('q7', 'Tengo fobia a las alturas 🏔️.')"><strong>😱 Miedo</strong>Info</div>
+            </div>
+        </div>
+
+        <div class="full">
+            <label>8. Favoritos</label>
+            <textarea id="q8" style="height:120px;"></textarea>
+            <div class="chips">
+                <div class="chip" onclick="fill('q8', '[C]🎧 [B]NOW PLAYING[/B] 🎧\n[C]0:45 ━━●─────── 3:20\n[C]⇆ㅤ◁ㅤ❚❚ㅤ▷ㅤ↻\n[C][I]Canción - Artista[/I]')"><strong>🎵 Player</strong>Spotify</div>
+                <div class="chip" onclick="fill('q8', '[B]🎬 Peli:[/B] Terror\n[B]📺 Serie:[/B] TWD\n[B]📚 Libro:[/B] Fantasía')"><strong>🎬 Ficha</strong>Media</div>
+                <div class="chip" onclick="fill('q8', 'Fan de Marvel, Star Wars y el Anime Shonen.')"><strong>🍿 Texto</strong>Fan</div>
+                <div class="chip" onclick="fill('q8', '[B]Top Series:[/B]\n1. Breaking Bad\n2. Arcane\n3. The Boys')"><strong>📺 Rank</strong>Top 3</div>
+            </div>
+        </div>
+
+        <div class="full">
+            <label>Despedida</label>
+            <input type="text" id="outro" class="txt" value="¡Gracias por leer! [C]">
+            <div class="chips">
+                <div class="chip" onclick="fill('outro', '[C]✨ Gracias por leer. ¡Mi priv está abierto! ✨')"><strong>✨ Soft</strong></div>
+                <div class="chip" onclick="fill('outro', '[C][B]GAME OVER.[/B] Insert Coin. 🪙')"><strong>🎮 Gamer</strong></div>
+                <div class="chip" onclick="fill('outro', '[C]🥀 Fin del comunicado. Cambio y fuera.')"><strong>🥀 Sad</strong></div>
+                <div class="chip" onclick="fill('outro', '[C]👻 [I]User has disconnected...[/I]')"><strong>💻 Tech</strong></div>
+            </div>
+        </div>
+    </div>
+
+    <h2>📤 3. Exportar Diseño (Detailed ASCII)</h2>
+    <div class="style-grid">
+        <div class="style-card" onclick="gen('terminal')"><h4>💻 Terminal Pro</h4><span>Barras de Carga</span></div>
+        <div class="style-card" onclick="gen('magazine')"><h4>📰 Magazine</h4><span>Periódico Realista</span></div>
+        <div class="style-card" onclick="gen('anime')"><h4>⛩️ Japan Manga</h4><span>Decoración Kanji</span></div>
+        <div class="style-card" onclick="gen('dark')"><h4>☠️ Dark Heavy</h4><span>Bloques Sólidos</span></div>
+        <div class="style-card" onclick="gen('neon')"><h4>🔮 Neon Cyber</h4><span>Destellos & Rayos</span></div>
+        <div class="style-card" onclick="gen('playlist')"><h4>🎵 Playlist UI</h4><span>Reproductor Completo</span></div>
+        <div class="style-card" onclick="gen('aesthetic')"><h4>☁️ Aesthetic</h4><span>Nubes & Soft</span></div>
+        <div class="style-card" onclick="gen('royal')"><h4>⚜️ Royal Gold</h4><span>Ornamentos</span></div>
+        <div class="style-card" onclick="gen('vapor')"><h4>💾 Vaporwave</h4><span>Retro 90s</span></div>
+        <div class="style-card" onclick="gen('gothic')"><h4>🦇 Gothic</h4><span>Cruces y Tumbas</span></div>
+        <div class="style-card" onclick="gen('minimal')"><h4>🔹 Minimal</h4><span>Solo lo justo</span></div>
+        <div class="style-card" onclick="gen('classic')"><h4>📄 Classic Pro</h4><span>Marcos Dobles</span></div>
+    </div>
+
+    <textarea id="final-code" readonly placeholder="El código aparecerá aquí..."></textarea>
+    <button class="btn-action" onclick="copy()">📋 COPIAR TODO</button>
+
+</div>
+
+<script>
+    // === 1. BANNER ENGINE (REBUILT FOR RELIABILITY) ===
+    const cvs = document.getElementById('cvs');
+    const ctx = cvs.getContext('2d');
+    let assets = { bg: null, char: null };
+
+    // Update Slider Labels
+    function upd(id, val) {
+        let suffix = '';
+        if(id.includes('S')) suffix = 'x';
+        else if(id.includes('Y') || id.includes('X')) suffix = 'px';
+        else if(id.includes('D')) suffix = '%';
+        
+        document.getElementById('l_' + id).innerText = val + suffix;
+        render(); // Force redraw on slider change
+    }
+
+    function load(key, input) {
+        if (input.files && input.files[0]) {
+            const r = new FileReader();
+            r.onload = e => {
+                const i = new Image();
+                i.onload = () => { assets[key] = i; render(); };
+                i.src = e.target.result;
+            };
+            r.readAsDataURL(input.files[0]);
+        }
+    }
+
+    function render() {
+        const w=800, h=350;
+        const layout = document.getElementById('layout').value;
+        const layCol = document.getElementById('layCol').value;
+        
+        // 1. Fondo (Color y/o Imagen)
+        ctx.fillStyle = document.getElementById('bgCol').value; 
+        ctx.fillRect(0,0,w,h);
+
+        if (assets.bg) {
+            const s = parseFloat(document.getElementById('bgScale').value);
+            const y = parseInt(document.getElementById('bgY').value);
+            const sw = w * s;
+            const sh = (assets.bg.height / assets.bg.width) * sw;
+            ctx.drawImage(assets.bg, (w-sw)/2, (h-sh)/2 + y, sw, sh);
+        }
+
+        // 2. Efectos de Fondo (Detrás del PJ)
+        if(layout === 'manga') {
+            ctx.fillStyle="white"; ctx.globalAlpha=0.15;
+            for(let i=0;i<w;i+=8) for(let j=0;j<h;j+=8) if((i+j)%16==0) ctx.fillRect(i,j,2,2);
+            ctx.globalAlpha=1;
+        }
+        if(layout === 'cyber') {
+            ctx.strokeStyle=layCol; ctx.lineWidth=1; ctx.globalAlpha=0.4;
+            for(let i=0;i<w;i+=40) { ctx.beginPath(); ctx.moveTo(i,0); ctx.lineTo(i,h); ctx.stroke(); }
+            ctx.globalAlpha=1;
+        }
+
+        // 3. Dimming
+        ctx.fillStyle = `rgba(0,0,0,${document.getElementById('bgDim').value})`; 
+        ctx.fillRect(0,0,w,h);
+
+        // 4. Personaje (Render)
+        if (assets.char) {
+            const s = parseFloat(document.getElementById('chScale').value);
+            const x = parseInt(document.getElementById('chX').value);
+            const y = parseInt(document.getElementById('chY').value);
+            const sw = (assets.char.width / assets.char.height) * (h * s);
+            const sh = h * s;
+            
+            // Sombra del PJ
+            ctx.shadowColor="rgba(0,0,0,0.8)"; ctx.shadowBlur=15; ctx.shadowOffsetX=5;
+            ctx.drawImage(assets.char, (w-sw)/2 + x, (h-sh)/2 + y, sw, sh);
+            ctx.shadowColor="transparent";
+        }
+
+        // 5. Layout Overlay (Encima del PJ)
+        if(layout === 'neon') {
+            ctx.strokeStyle=layCol; ctx.lineWidth=6; 
+            ctx.shadowColor=layCol; ctx.shadowBlur=20;
+            ctx.strokeRect(20,20,w-40,h-40); 
+            ctx.strokeRect(30,30,w-60,h-60);
+            ctx.shadowColor="transparent";
+        }
+        if(layout === 'glass') {
+            ctx.fillStyle="rgba(255,255,255,0.1)"; ctx.fillRect(50,50,w-100,h-100);
+            ctx.strokeStyle=layCol; ctx.lineWidth=2; ctx.strokeRect(50,50,w-100,h-100);
+        }
+        if(layout === 'cinematic') {
+            ctx.fillStyle="black"; ctx.fillRect(0,0,w,50); ctx.fillRect(0,h-50,w,50);
+        }
+        if(layout === 'royal') {
+            ctx.strokeStyle=layCol; ctx.lineWidth=3;
+            ctx.strokeRect(20,20,w-40,h-40);
+            ctx.beginPath(); ctx.moveTo(10,10); ctx.lineTo(100,10); ctx.stroke();
+            ctx.beginPath(); ctx.moveTo(w-10,h-10); ctx.lineTo(w-100,h-10); ctx.stroke();
+        }
+        if(layout === 'card') {
+            ctx.fillStyle="rgba(20,20,20,0.9)"; ctx.fillRect(60, h/2-70, w-120, 140);
+            ctx.strokeStyle=layCol; ctx.lineWidth=2; ctx.strokeRect(70, h/2-60, w-140, 120);
+        }
+
+        // 6. Texto
+        const txt = document.getElementById('txt').value;
+        const font = document.getElementById('font').value;
+        const size = document.getElementById('tsize').value;
+        
+        ctx.font = `900 ${size}px '${font}'`;
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+
+        if(document.getElementById('useGrad').checked) {
+            const g = ctx.createLinearGradient(0,0,w,0);
+            g.addColorStop(0.3, document.getElementById('tc1').value);
+            g.addColorStop(0.7, document.getElementById('tc2').value);
+            ctx.fillStyle = g;
+        } else {
+            ctx.fillStyle = document.getElementById('tc1').value;
+        }
+
+        ctx.shadowColor="rgba(0,0,0,1)"; ctx.shadowBlur=10; ctx.shadowOffsetX=4; ctx.shadowOffsetY=4;
+        ctx.fillText(txt, w/2, h/2);
+        ctx.shadowColor="transparent";
+    }
+    setTimeout(render, 800); // Esperar carga fuentes
+
+    // === 2. TEXT ENGINE ===
+    const intros = {
+        amino: ["¡Hola! 👋\nSoy un veterano de Amino. Tras el cierre de la app y los problemas de servidores, busqué refugio aquí para seguir compartiendo contenido.", "¡Buenas! ✨\nVengo de Amino. Espero encontrar una comunidad igual de genial y activa.", "¡Hey! Refugiado de Amino reportándose. Buscando un nuevo comienzo. 👋"],
+        tiktok: ["¡Hola! 📱\nVi esta app recomendada en un video de TikTok y me animé a entrar. Aquí mi tag de presentación.", "¡Buenas! ✨\nVengo de TikTok buscando comunidades más profundas que un video corto.", "¡Hey! El algoritmo de TikTok me trajo aquí. Veamos qué tal. 👋"],
+        new: ["¡Hola a todos! 👋\nSoy nuevo en la plataforma. Hago este tag para presentarme formalmente.", "¡Buenas! ✨\nLlego con muchas ganas de aportar a la comunidad. Aquí les dejo mi tag.", "¡Hey! Usuario nuevo reportándose. Espero llevarme bien con todos. 👋"],
+        chill: ["¡Qué tal! ☕\nPresentación rápida y sin mucho drama. Pasen, lean y si quieren, saluden.", "Buenas vibras para todos. ✨\nDejo mis datos básicos por si alguien quiere charlar.", "Hola. ✌️\nActualizando mi perfil de forma casual y relajada."],
+        gamer: ["¡Hola gamers! 🎮\nLlegué buscando squad o gente para debatir de juegos. Lean mi perfil.", "Game Start! 👾\nSoy un vicio de los videojuegos. Aquí les dejo mis estadísticas y gustos.", "¡Hola! 🕹️\nSi juegas algo de lo que menciono, no dudes en hablarme."],
+        rol: ["Saludos, viajeros. 🎭\nDejo mi ficha OOC (Fuera de personaje) para futuros roles y tramas.", "Atención Roleplayers. 📜\nAquí presento mis condiciones, estilo y gustos de rol.", "🎭 [I]Abriendo archivo de usuario OOC...[/I] Cargando datos..."],
+        art: ["¡Hola! 🎨\nSoy artista digital/tradicional y vengo a compartir mi trabajo y proceso.", "¡Buenas! 🖌️\nDibujante reportándose. Hago este tag para que conozcan a la persona tras el lápiz.", "✨ Creador de contenido visual aquí. Espero que les guste mi arte."],
+        old: ["¡He vuelto! 🔙\nDespués de un largo descanso, regreso a la comunidad. Actualizo mis datos.", "Long time no see. 👀\nHe vuelto de la tumba. ¿Qué me he perdido?", "🔙 [B]Re-connecting...[/B] Usuario veterano regresando al servidor."]
+    };
+    let counts = {};
+    function cycle(k) {
+        if(!counts[k]) counts[k]=0;
+        document.getElementById('intro').value = intros[k][counts[k]%3];
+        counts[k]++;
+    }
+    function fill(id, t) { document.getElementById(id).value = t; }
+
+    function gen(st) {
+        const v = {
+            in: document.getElementById('intro').value,
+            q1: document.getElementById('q1').value,
+            q2: document.getElementById('q2').value,
+            q3: document.getElementById('q3').value,
+            q4: document.getElementById('q4').value,
+            q5: document.getElementById('q5').value,
+            q6: document.getElementById('q6').value,
+            q7: document.getElementById('q7').value,
+            q8: document.getElementById('q8').value,
+            out: document.getElementById('outro').value
+        };
+        const sign = "\n\n[C]★ ᴄʀᴇᴅɪᴛs: @ᴡᴏᴅᴀʜs7 ★";
+        let t = "";
+        
+        // ESTILOS HEAVY DETAIL
+        if(st==='classic') {
+            t = `[C]╔══════════════════════════════╗\n[C]║      TAG DE PRESENTACIÓN     ║\n[C]╚══════════════════════════════╝\n\n[C]${v.in}\n\n[C]┌─────── [B]01. IDENTIDAD[/B] ───────┐\n[C]${v.q1}\n\n[C]┌──────── [B]02. ORIGEN[/B] ────────┐\n[C]${v.q2}\n\n[C]┌──────── [B]03. GUSTOS[/B] ────────┐\n${v.q3}\n\n[C]┌────── [B]04. DISGUSTOS[/B] ───────┐\n${v.q4}\n\n[B]➤ CUALIDADES:[/B] ${v.q5}\n[B]➤ FECHA:[/B] ${v.q6}\n\n[C]┌──────── [B]EXTRAS[/B] ─────────┐\n${v.q7}\n\n[C]┌─────── [B]FAVORITOS[/B] ───────┐\n${v.q8}\n\n[C]══════════════════════════════\n[C]${v.out}`;
+        }
+        else if(st==='magazine') {
+            t = `[C]╔══════════════════════════════╗\n[C]║     📰 THE DAILY TAG 📰      ║\n[C]╚══════════════════════════════╝\n[C][I]Vol. 1 | Edición Especial: Nuevo Usuario[/I]\n\n[C]${v.in}\n\n[C]──────────────\n[C][B]⚡ TITULARES PRINCIPALES ⚡[/B]\n[C]──────────────\n\n[B]∎ PERFIL DEL SUJETO:[/B]\n${v.q1}\n${v.q2}\n\n[B]∎ TENDENCIAS (Gustos):[/B]\n${v.q3}\n\n[B]∎ POLÉMICA (Disgustos):[/B]\n${v.q4}\n\n[C]──────────────\n[B]🎂 FECHA:[/B] ${v.q6} | [B]💎 VALOR:[/B] ${v.q5}\n[C]──────────────\n\n[B]📢 COLUMNA DE GOSSIP:[/B]\n${v.q7}\n\n[B]🎬 RESEÑAS:[/B]\n${v.q8}\n\n[C]||||||||||||||||||||||||\n[C]${v.out}`;
+        }
+        else if(st==='terminal') {
+            t = `[C]💻 [B]ROOT@SYSTEM:~#[/B] ./init_tag.sh\n[C]Loading Core... [■■■■■■■■■■] 100%\n\n[C]${v.in}\n\n[B]root@user:~# cat identity.txt[/B]\n[C]> ID: ${v.q1}\n[C]> ORIGIN: ${v.q2}\n\n[B]root@user:~# loading prefs...[/B]\n[C][■■■■■■■■■□] 90%\n${v.q3}\n\n[B]root@user:~# error_log.txt[/B]\n[C][■■■□□□□□□□] 30%\n${v.q4}\n\n[B]root@user:~# scan stats[/B]\n[+] VAL: ${v.q5}\n[+] DATE: ${v.q6}\n\n[B]root@user:~# access media_db[/B]\n${v.q8}\n\n[B]root@user:~# tail extra.log[/B]\n${v.q7}\n\n[C]>>> [I]Session Closed.[/I]\n[C]${v.out}`;
+        }
+        else if(st==='anime') {
+            t = `[C]★・・・・・・★・・・・・・★\n[C]「 [B]TAG DE PRESENTACIÓN[/B] 」\n[C]★・・・・・・★・・・・・・★\n\n[C]${v.in}\n\n[C]『 [B]名前 (Identidad)[/B] 』\n[C]${v.q1}\n\n[C]『 [B]出身 (Origen)[/B] 』\n[C]${v.q2}\n\n[C]┏━━━━━━━━━━━━━━━┓\n[C]   好き (Gustos)\n[C]┗━━━━━━━━━━━━━━━┛\n${v.q3}\n\n[C]┏━━━━━━━━━━━━━━━┓\n[C]   嫌い (Disgustos)\n[C]┗━━━━━━━━━━━━━━━┛\n${v.q4}\n\n[C]『 [B]データ (Datos)[/B] 』\n[C]${v.q6} / ${v.q5}\n\n[C]『 [B]趣味 (Extra)[/B] 』\n${v.q7}\n\n[C]『 [B]お気に入り (Favs)[/B] 』\n${v.q8}\n\n[C]終 ${v.out}`;
+        }
+        else if(st==='neon') {
+            t = `[C]❇️ ══════ [B]TAG DE PRESENTACIÓN[/B] ══════ ❇️\n\n[C]${v.in}\n\n[C]╔════ [B]⚡ DATOS ⚡[/B] ════╗\n[C]👤 ${v.q1}\n[C]🌍 ${v.q2}\n[C]╚══════════════════╝\n\n[C]🔮 [B]GUSTOS:[/B]\n${v.q3}\n\n[C]☢️ [B]DISGUSTOS:[/B]\n${v.q4}\n\n[C]💠 [B]INFO:[/B] ${v.q6} | ${v.q5}\n\n[C]🎥 [B]MEDIA:[/B]\n${v.q8}\n\n[C]📜 [B]EXTRA:[/B]\n${v.q7}\n\n[C]❇️ ════════════════════════ ❇️\n[C]${v.out}`;
+        }
+        else if(st==='dark') {
+            t = `[C]▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓\n[C]   [B]TAG DE PRESENTACIÓN[/B]   \n[C]▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓\n\n[C]${v.in}\n\n[B]█ 01. ID[/B]\n[C]${v.q1}\n\n[B]█ 02. SRC[/B]\n[C]${v.q2}\n\n[B]█ 03. POS (+)[/B]\n${v.q3}\n\n[B]█ 04. NEG (-)[/B]\n${v.q4}\n\n[B]█ 05. DATA[/B]\n[C]${v.q6} | ${v.q5}\n\n[B]█ 06. EXTRA[/B]\n${v.q7}\n\n[B]█ 07. MEDIA[/B]\n${v.q8}\n\n[C]▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀\n[C][S]${v.out}[/S]`;
+        }
+        else if(st==='playlist') {
+            t = `[C]╔══════════════════════════╗\n[C]║ 🎶 TAG DE PRESENTACIÓN 🎶 ║\n[C]╚══════════════════════════╝\n\n[C]${v.in}\n\n[C]▶️ [B]Track 01: Intro[/B]\n[C]Name: ${v.q1}\n[C]From: ${v.q2}\n\n[C]▶️ [B]Track 02: Preferences[/B]\n${v.q3}\n\n[C]▶️ [B]Track 03: Skip[/B]\n${v.q4}\n\n[C]▶️ [B]Track 04: Details[/B]\n[C]${v.q5} | ${v.q6}\n\n[C]▶️ [B]Track 05: Bonus[/B]\n${v.q7}\n\n[C]▶️ [B]Track 06: Media[/B]\n${v.q8}\n\n[C]▶️ [B]Track 07: Outro[/B]\n[C]${v.out}\n\n[C]0:00 ━━●─────────────── 3:00\n[C]⇆ㅤㅤ◁ㅤㅤ❚❚ㅤㅤ▷ㅤㅤ↻\n[C]🔊 Vol: ▮▮▮▮▮▮▮▮▯▯`;
+        }
+        else if(st==='royal') {
+            t = `[C]⚜️ ════════ [B]TAG DE PRESENTACIÓN[/B] ════════ ⚜️\n\n[C]${v.in}\n\n[C]🏰 [B]IDENTIDAD[/B]\n[C]${v.q1}\n[C]${v.q2}\n\n[C]⚜️ [B]PREDILECCIONES[/B] ⚜️\n${v.q3}\n\n[C]⚔️ [B]AVERSIÓN[/B] ⚔️\n${v.q4}\n\n[C]📜 [B]MANUSCRITO[/B]\n[C]Fecha: ${v.q6}\n[C]Virtud: ${v.q5}\n\n[C]🏺 [B]CURIOSIDAD[/B]\n${v.q7}\n\n[C]🎭 [B]ENTRETENIMIENTO[/B]\n${v.q8}\n\n[C]⚜️ ══════════════════════════════ ⚜️\n[C]${v.out}`;
+        }
+        else if(st==='vapor') {
+            t = `[C]💾 [B]ＶＡＰＯＲ　ＴＡＧ[/B] 💾\n\n[C]${v.in}\n\n[C]ＰＬＡＹＥＲ： ${v.q1}\n[C]ＬＯＣＡＴＩＯＮ： ${v.q2}\n\n[C]▀▄▀▄▀▄ [B]ＡＥＳＴＨＥＴＩＣＳ[/B] ▄▀▄▀▄▀\n${v.q3}\n\n[C]🚫 [B]ＥＲＲＯＲ　４０４[/B]\n${v.q4}\n\n[C]📂 [B]ＤＡＴＡ[/B]\n[C]${v.q5} ／ ${v.q6}\n\n[C]📼 [B]ＶＨＳ　ＴＡＰＥ[/B]\n${v.q8}\n\n[C]🌊 ${v.out}`;
+        }
+        else if(st==='gothic') {
+            t = `[C]⸸ ══════ [B]TAG DE PRESENTACIÓN[/B] ══════ ⸸\n\n[C]${v.in}\n\n[C]🧛🏻‍♂️ [B]Nombre:[/B] ${v.q1}\n[C]🌑 [B]Origen:[/B] ${v.q2}\n\n[C]🦇 [B]Placeres:[/B]\n${v.q3}\n\n[C]⚰️ [B]Desprecios:[/B]\n${v.q4}\n\n[C]🕯️ [B]Vida:[/B] ${v.q6}\n[C]🕷️ [B]Alma:[/B] ${v.q5}\n\n[C]🥀 [B]Final:[/B] ${v.out}`;
+        }
+        else if(st==='aesthetic') {
+             t = `[C]☁️ ᴛᴀɢ ᴅᴇ ᴘʀᴇsᴇɴᴛᴀᴄɪᴏɴ ☁️\n\n[C]${v.in}\n\n[C]╭ ┄ ┄ ┄ ┄ ┄ ┄ ┄ ┄ ╮\n[C]   ✎ [B]PROFILE[/B]\n[C]╰ ┄ ┄ ┄ ┄ ┄ ┄ ┄ ┄ ╯\n\n[C]ʚĭɞ ${v.q1}\n[C]ʚĭɞ ${v.q2}\n\n[C]⛓ [B]Likes & Nopes[/B]\n${v.q3}\n\n${v.q4}\n\n[C]♡ [B]Details:[/B] ${v.q6} / ${v.q5}\n\n[C]♡ [B]Media & Extra:[/B]\n${v.q8}\n${v.q7}\n\n[C]       ｡ﾟﾟ･｡･ﾟﾟ｡\n[C]       ﾟ。    　｡ﾟ\n[C]       　ﾟ･｡･ﾟ\n[C]${v.out}`;
+        }
+        else { // Minimal
+            t = `[C]TAG DE PRESENTACIÓN\n\n[C]${v.in}\n\n[B]▪ ID:[/B] ${v.q1}\n[B]▪ ORIGIN:[/B] ${v.q2}\n\n[B]▪ LIKES:[/B]\n${v.q3}\n\n[B]▪ DISLIKES:[/B]\n${v.q4}\n\n[B]▪ INFO:[/B] ${v.q5} | ${v.q6}\n\n[B]▪ EXTRA:[/B]\n${v.q7}\n${v.q8}\n\n[C]${v.out}`;
+        }
+
+        document.getElementById('final-code').value = t + sign;
+    }
+
+    function dl() {
+        const a = document.createElement('a');
+        a.download = 'KyodoBanner.png'; a.href = cvs.toDataURL(); a.click();
+    }
+    function copy() {
+        const c = document.getElementById('final-code');
+        c.select(); navigator.clipboard.writeText(c.value);
+        alert("¡Copiado! Listo para pegar en Kyodo.");
+    }
+</script>
+
+</body>
+</html>
